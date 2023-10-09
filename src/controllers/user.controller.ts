@@ -1,1 +1,1 @@
-gi
+console.log("Database Connected")
