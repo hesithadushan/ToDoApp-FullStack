@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const connectToDatabase =async () => {
  try{
     const connection = await mongoose.connect(
-        "mongodb+srv://hesithadb:7RE5bCs6Sx6mnQln@cluster0.vz1ih2m.mongodb.net/?retryWrites=true&w=majority"
+        "mongodb+srv://hesithadb:7RE5bCs6Sx6mnQln@cluster0.vz1ih2m.mongodb.net/ToDoApp?retryWrites=true&w=majority"
     )
     if(connection){
         console.log("Database Connected")
