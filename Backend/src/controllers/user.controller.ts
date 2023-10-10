@@ -4,9 +4,9 @@ import User from "../models/user.model"
 
 export const createUser = async (request: Request, response: Response) => {
     try{
-        const { name, email, password } = request.body
+        const { name, email, password} = request.body
         
-        const existingUser = await User.find({email})
+        const existingUser = await User.findOne({email})
 
         if (existingUser){
             return response.status(409).send("User Alerady Exists")
