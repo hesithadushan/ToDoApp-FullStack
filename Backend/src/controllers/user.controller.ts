@@ -7,7 +7,7 @@ import { Types } from "mongoose";
 
 
 const getUserToken = (_id: string | Types.ObjectId) => {
-    const authenticatedUserToken = jwt.sign({ _id }, process.env.SECRET_KEY, {
+    const authenticatedUserToken = jwt.sign({ _id }, "express", {
       expiresIn: "7d",
     });
     return authenticatedUserToken;
@@ -29,7 +29,7 @@ export const createUser = async (request: Request, response: Response) => {
         const user = await User.create({
             name,
             email,
-            hashedPassword,
+            password:hashedPassword,
         })
 
         return response.status(201).send({message:"User Created Successfully"})
