@@ -66,7 +66,7 @@ export const loginUser = async (request: Request, response: Response) =>{
         }
 
     } catch (error) {
-        console.log("Cannot login user", error)
+        console.log ("Cannot login user", error)
         throw error
     }
 };
