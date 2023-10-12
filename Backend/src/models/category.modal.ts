@@ -1,32 +1,52 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose from "mongoose";
+import { Response } from "express";
+import categorySchemaTemplate from "../schema.templates/category.schema.template";
+import { AuthRequest } from "../middleware";
+import { ICategory } from "../types";
 
-const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  isEditable: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  color: {
-    id: String,
-    name: String,
-    code: String,
-  },
-  icon: {
-    id: String,
-    name: String,
-    symbol: String,
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-})
+const categorySchema = new mongoose.Schema(categorySchemaTemplate);
 
-const Category = mongoose.model("Category", categorySchema)
+const Category = mongoose.model("Category", categorySchema);
 
-export default Category
+export const getAllCategoriesModel = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    const { user } = request;
+
+    const categories = await Category.find({
+      user: user,
+    });
+    return response.send(categories);
+  } catch (error) {
+    response.send({ error: "Something went wrong" });
+    console.log("error in getAllCategories", error);
+    throw error;
+  }
+};
+
+export const createCategoryModel = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    const { color, icon, isEditable, name }: ICategory = request.body;
+    const { user } = request;
+
+    const category = await Category.create({
+      color,
+      icon,
+      isEditable,
+      name,
+      user,
+    });
+    response.send(category);
+  } catch (error) {
+    console.log("error in createCategory", error);
+    response.send({ error: "Something went wrong" });
+    throw error;
+  }
+};
+
+export default Category;
