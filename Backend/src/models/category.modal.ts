@@ -18,7 +18,7 @@ export const getAllCategoriesModel = async (
     const categories = await Category.find({
       user: user,
     });
-    return response.send(categories);
+    return categories;
   } catch (error) {
     response.send({ error: "Something went wrong" });
     console.log("error in getAllCategories", error);
@@ -41,7 +41,7 @@ export const createCategoryModel = async (
       name,
       user,
     });
-    response.send(category);
+    return category;
   } catch (error) {
     console.log("error in createCategory", error);
     response.send({ error: "Something went wrong" });
@@ -54,17 +54,36 @@ export const getCategoryByIdModal = async (
   response: Response
 ) => {
   try {
-    const { user } = request
-    const { id } = request.params
+    const { user } = request;
+    const { id } = request.params;
 
     const category = await Category.findOne({
       _id: id,
-    })
-    return response.send(category)
+    });
+    return category;
   } catch (error) {
-    response.send({ error: "Something went wrong" })
-    console.log("error in getAllCategories", error)
-    throw error
+    response.send({ error: "Something went wrong" });
+    console.log("error in getAllCategories", error);
+    throw error;
   }
-}
+};
+
+export const deleteCategoryModal = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    const { id } = request.params;
+    await Category.deleteMany({
+      categoryId: id,
+    });
+    const category = await Category.deleteOne({
+      _id: id,
+    });    
+  } catch (error) {
+    response.send({ error: "Error in deleting the category" });
+    throw error;
+  }
+};
+
 export default Category;

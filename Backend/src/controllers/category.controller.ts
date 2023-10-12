@@ -1,6 +1,7 @@
 import { Response } from "express";
 import {
   createCategoryModel,
+  deleteCategoryModal,
   getAllCategoriesModel,
   getCategoryByIdModal,
 } from "../models/category.modal";
@@ -40,8 +41,20 @@ export const getCategoryById = async (
 ) => {
   try {
     const category = await getCategoryByIdModal(request, response);
-    return response.send(category)
+    return response.send(category);
   } catch (error) {
     console.log("error in getCategoryById", error);
+  }
+};
+
+export const deleteCategory = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    await deleteCategoryModal(request, response);
+    return response.send({ message: "Category deleted successfully" });
+  } catch (error) {
+    console.log("error in deleteCategory", error);
   }
 };
