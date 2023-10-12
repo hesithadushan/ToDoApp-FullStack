@@ -1,5 +1,9 @@
 import { Response } from "express";
-import  { createCategoryModel, getAllCategoriesModel } from "../models/category.modal";
+import {
+  createCategoryModel,
+  getAllCategoriesModel,
+  getCategoryByIdModal,
+} from "../models/category.modal";
 import { AuthRequest } from "../middleware";
 
 export const getAllCategories = async (
@@ -7,7 +11,7 @@ export const getAllCategories = async (
   response: Response
 ) => {
   try {
-    const categories = await getAllCategoriesModel(request,response)
+    const categories = await getAllCategoriesModel(request, response);
     return response.send(categories);
   } catch (error) {
     response.send({ error: "Something went wrong" });
@@ -21,11 +25,23 @@ export const createCategory = async (
   response: Response
 ) => {
   try {
-    const category = await createCategoryModel(request,response);
+    const category = await createCategoryModel(request, response);
     response.send(category);
   } catch (error) {
     console.log("error in createCategory", error);
     response.send({ error: "Something went wrong" });
     throw error;
+  }
+};
+
+export const getCategoryById = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    const category = await getCategoryByIdModal(request, response);
+    return response.send(category)
+  } catch (error) {
+    console.log("error in getCategoryById", error);
   }
 };
