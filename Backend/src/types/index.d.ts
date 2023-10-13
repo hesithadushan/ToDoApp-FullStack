@@ -16,6 +16,7 @@ export interface IIcon {
 }
 
 export interface ICategory {
+  _id: string;
   name: string;
   user: IUser | string;
   isEditable: boolean;

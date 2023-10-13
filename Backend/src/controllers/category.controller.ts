@@ -4,6 +4,7 @@ import {
   deleteCategoryModal,
   getAllCategoriesModel,
   getCategoryByIdModal,
+  updateCategoryModel,
 } from "../models/category.modal";
 import { AuthRequest } from "../middleware";
 
@@ -56,5 +57,17 @@ export const deleteCategory = async (
     return response.send({ message: "Category deleted successfully" });
   } catch (error) {
     console.log("error in deleteCategory", error);
+  }
+};
+
+export const updateCategory = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    await updateCategoryModel(request, response);
+    response.send({ message: "Category updated successfully" });
+  } catch (error) {
+    console.log("error in updateCategory", error);
   }
 };
