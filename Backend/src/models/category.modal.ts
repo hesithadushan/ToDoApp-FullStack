@@ -3,6 +3,7 @@ import { Response } from "express";
 import categorySchemaTemplate from "../schema.templates/category.schema.template";
 import { AuthRequest } from "../middleware";
 import { ICategory } from "../types";
+import Task from "./task.modal";
 
 const categorySchema = new mongoose.Schema(categorySchemaTemplate);
 
@@ -74,7 +75,7 @@ export const deleteCategoryModal = async (
 ) => {
   try {
     const { id } = request.params;
-    await Category.deleteMany({
+    await Task.deleteMany({
       categoryId: id,
     });
     const category = await Category.deleteOne({
