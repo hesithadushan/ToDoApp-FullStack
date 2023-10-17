@@ -14,7 +14,7 @@ export const getAllCategories = async (
 ) => {
   try {
     const categories = await getAllCategoriesModel(request, response);
-    return response.send(categories);
+    return response.json(categories);
   } catch (error) {
     response.send({ error: "Something went wrong" });
     console.log("error in getAllCategories", error);
