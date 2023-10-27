@@ -9,7 +9,7 @@ import { Image } from "react-native";
 import Animated, { ZoomIn } from "react-native-reanimated";
 
 const REMINDER_IMAGE =
-  "https://w7.pngwing.com/pngs/575/6/png-transparent-checklist-task-to-do-list-plan-work-reminder-to-do-organization-memo-thumbnail.png";
+  "https://icons.iconarchive.com/icons/dtafalonso/ios8/512/Reminders-icon.png";
 
 const WelcomeScreen = () => {
   const navigation = useNavigation<AuthScreenNavigationType<"Welcome">>();
@@ -46,11 +46,11 @@ const WelcomeScreen = () => {
             </Animated.View>
           </Box>
           <Text textAlign="center" variant="textXl" fontWeight="700">
-            Do you want to be more productive?
+            To Do App
           </Text>
           <Box my="3.5" mx="10">
             <Button
-              label="Start your journey"
+              label="Log In"
               onPress={navigateToSignUpScreen}
             />
           </Box>
@@ -60,7 +60,7 @@ const WelcomeScreen = () => {
             fontWeight="700"
             color="gray5"
           >
-            26,698 registered today
+           Log in to continue!
           </Text>
         </Box>
       </LinearGradient>

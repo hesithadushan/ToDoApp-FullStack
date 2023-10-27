@@ -46,10 +46,10 @@ const SignUpScreen = () => {
     <SafeAreaWrapper>
       <Box flex={1} px="5.5" mt={"13"}>
         <Text variant="textXl" fontWeight="700">
-          Welcome to Blossom!
+          Welcome to ToDoApp!
         </Text>
         <Text variant="textXl" fontWeight="700" mb="6">
-          Your journey starts here
+          Enter your details
         </Text>
 
         <Controller
