@@ -12,23 +12,23 @@ const AuthStackNavigator = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Welcome"
-        // options={{
-        //   headerShown: false,
-        // }}
+        options={{
+          headerShown: false,
+        }}
         component={WelcomeScreen}
       />
       <Stack.Screen
         name="SignIn"
-        // options={{
-        //   headerShown: false,
-        // }}
+        options={{
+          headerShown: false,
+        }}
         component={SignInScreen}
       />
       <Stack.Screen
         name="SignUp"
-        // options={{
-        //   headerShown: false,
-        // }}
+        options={{
+          headerShown: false,
+        }}
         component={SignUpScreen}
       />
     </Stack.Navigator>
