@@ -1,0 +1,13 @@
+service: react-air-server
+provider:
+  name: aws
+  runtime: "nodejs18.18.0",
+
+functions:
+  server:
+    handler: lambda.server
+    events:
+      - http:
+          path: server
+          method: get
+          cors: true
