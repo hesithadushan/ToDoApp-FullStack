@@ -1,13 +1,13 @@
-import { Box, Text } from "../../utils/theme"
-import { Pressable } from "react-native"
+import { Box, Text } from "../../utils/theme";
+import { Pressable } from "react-native";
 
 type ButtonProps = {
-  label: string
-  onPress: () => void
-  onLongPress?: () => void
-  disabled?: boolean
-  uppercase?: boolean
-}
+  label: string;
+  onPress: () => void;
+  onLongPress?: () => void;
+  disabled?: boolean;
+  uppercase?: boolean;
+};
 
 const Button = ({
   label,
@@ -34,7 +34,7 @@ const Button = ({
         </Text>
       </Box>
     </Pressable>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

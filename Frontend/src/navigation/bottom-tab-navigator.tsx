@@ -1,16 +1,16 @@
-import Icons from "../components/shared/icons"
-import CompletedScreen from "../screens/completed-screen"
-import TodayScreen from "../screens/today-screen"
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { useTheme } from "@shopify/restyle"
-import CategoriesStackNavigator from "./categories-stack-navigator"
-import HomeStackNavigator from "./home-stack-navigator"
-import { RootBottomTabParamList } from "./types"
+import Icons from "../components/shared/icons";
+import CompletedScreen from "../screens/completed-screen";
+import TodayScreen from "../screens/today-screen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useTheme } from "@shopify/restyle";
+import CategoriesStackNavigator from "./categories-stack-navigator";
+import HomeStackNavigator from "./home-stack-navigator";
+import { RootBottomTabParamList } from "./types";
 
-const Tab = createBottomTabNavigator<RootBottomTabParamList>()
+const Tab = createBottomTabNavigator<RootBottomTabParamList>();
 
 const BottomTabNavigator = () => {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -57,7 +57,7 @@ const BottomTabNavigator = () => {
         })}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
 
-export default BottomTabNavigator
+export default BottomTabNavigator;

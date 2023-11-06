@@ -1,7 +1,7 @@
-import { IUser } from "../types"
-import axiosInstance, { TODO_TOKEN_NAME, saveToken } from "./config"
+import { IUser } from "../types";
+import axiosInstance, { TODO_TOKEN_NAME, saveToken } from "./config";
 
-type RegisterUserTypes = IUser
+type RegisterUserTypes = IUser;
 
 export const registerUser = async ({
   email,
@@ -13,28 +13,28 @@ export const registerUser = async ({
       email,
       password,
       name,
-    })
-    return response.data.user
+    });
+    return response.data.user;
   } catch (error) {
-    console.log("error in registerUser", error)
-    throw error
+    console.log("error in registerUser", error);
+    throw error;
   }
-}
+};
 
-type LoginUserTypes = Omit<IUser, "name">
+type LoginUserTypes = Omit<IUser, "name">;
 
 export const loginUser = async ({ email, password }: LoginUserTypes) => {
   try {
     const response = await axiosInstance.post("/user/login", {
       email,
       password,
-    })
-    const _token = response.data.token
-    axiosInstance.defaults.headers.common["Authorization"] = _token
-    saveToken(TODO_TOKEN_NAME, _token)
-    return response.data.user
+    });
+    const _token = response.data.token;
+    axiosInstance.defaults.headers.common["Authorization"] = _token;
+    saveToken(TODO_TOKEN_NAME, _token);
+    return response.data.user;
   } catch (error) {
-    console.log("error in loginUser", error)
-    throw error
+    console.log("error in loginUser", error);
+    throw error;
   }
-}
+};

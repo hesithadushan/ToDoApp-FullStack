@@ -1,36 +1,36 @@
-import axios from "axios"
-import * as SecureStore from "expo-secure-store"
+import axios from "axios";
+import * as SecureStore from "expo-secure-store";
 
-export const BASE_URL = "http://localhost:1337/"
+export const BASE_URL = "http://localhost:1337/";
 
-const TIME_OUT = 30000
-export const TODO_TOKEN_NAME = "ToDo_user_token"
+const TIME_OUT = 30000;
+export const TODO_TOKEN_NAME = "ToDo_user_token";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
-})
+});
 
 export const saveToken = async (key: string, value: string) => {
   try {
-    await SecureStore.setItemAsync(key, value)
+    await SecureStore.setItemAsync(key, value);
   } catch (error) {
-    console.log("error in saveToken", error)
-    throw error
+    console.log("error in saveToken", error);
+    throw error;
   }
-}
+};
 
 axiosInstance.interceptors.request.use(async (req) => {
   try {
-    const access_token = await SecureStore.getItemAsync(TODO_TOKEN_NAME)
-    req.headers.Authorization = access_token
-    return req
+    const access_token = await SecureStore.getItemAsync(TODO_TOKEN_NAME);
+    req.headers.Authorization = access_token;
+    return req;
   } catch (error) {
-    return req
+    return req;
   }
-})
+});
 
 export const fetcher = (url: string) =>
-  axiosInstance.get(url).then((res) => res.data)
+  axiosInstance.get(url).then((res) => res.data);
 
-export default axiosInstance
+export default axiosInstance;

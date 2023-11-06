@@ -1,11 +1,11 @@
-import theme, { Box, Text } from "../../utils/theme"
-import { FieldError } from "react-hook-form"
-import { StyleSheet, TextInput, TextInputProps } from "react-native"
+import theme, { Box, Text } from "../../utils/theme";
+import { FieldError } from "react-hook-form";
+import { StyleSheet, TextInput, TextInputProps } from "react-native";
 
 type InputProps = {
-  label: string
-  error?: FieldError | undefined
-} & TextInputProps
+  label: string;
+  error?: FieldError | undefined;
+} & TextInputProps;
 
 const Input = ({ label, error, ...props }: InputProps) => {
   return (
@@ -28,9 +28,9 @@ const Input = ({ label, error, ...props }: InputProps) => {
         </Text>
       )}
     </Box>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
