@@ -1,8 +1,7 @@
 service: react-air-server
 provider:
   name: aws
-  runtime: "nodejs18.18.0",
-
+  runtime: nodejs18.x
 functions:
   server:
     handler: lambda.server
